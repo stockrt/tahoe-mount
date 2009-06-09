@@ -9,7 +9,7 @@ Packager:  Rogerio Carvalho Schneider <stockrt@gmail.com>
 License:   GPL
 BuildArch: noarch
 Source:    %{name}-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id} -un)
 Requires:  fuse
 Requires:  dkms-fuse
 Requires:  tahoe-svc
@@ -33,7 +33,8 @@ tahoe-mount scripts
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/*
+%{_bindir}/tahoe*
+%{_bindir}/*.py
 %{_sysconfdir}/logrotate.d/*
 
 %clean
