@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# TAHOE_USER
+source /usr/local/tahoe-svc/conf/tahoe-svc.conf
+
+# Tahoe Fuse mount
+MALIAS="$1"
+MPOINT="$2"
+MPOINT=${MPOINT%/} # removes trailing slash
+
+NTRY="3"
+DOMOUNT="cd ~/.tahoe
+for ((x=0; x<$NTRY; x++))
+do
+	/usr/bin/blackmatch.py --alias=$MALIAS --cache-timeout=20 $MPOINT && break
+done
+grep \"$MPOINT\" /etc/mtab > /dev/null 2>&1 && echo \"Mount successfully completed for alias '$MALIAS' in '$MPOINT'\" || echo \"Error mounting alias '$MALIAS' in '$MPOINT'\"
+"
+
+if [[ ! -n "$MALIAS" || ! -n "$MPOINT" ]]
+then
+	echo "Usage: $0 <alias> <mount_point>"
+	exit
+else
+	# Fuse Device Permission
+	chmod 666 /dev/fuse > /dev/null 2>&1
+
+	if [ -f /usr/bin/fusermount ]
+	then
+		chmod o+x /usr/bin/fusermount > /dev/null 2>&1
+	fi
+	if [ -f /bin/fusermount ]
+	then
+		chmod o+x /bin/fusermount > /dev/null 2>&1
+	fi
+
+	if [ "$(id -un)" == "$TAHOE_USER" ]
+	then
+		eval "$DOMOUNT"
+	else
+		su - $TAHOE_USER -c "$DOMOUNT"
+	fi
+fi

@@ -1,0 +1,5 @@
+/home/*/.tahoe/*.log {
+	size 10M
+	rotate 0
+	missingok
+}
