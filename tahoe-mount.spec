@@ -12,7 +12,6 @@ Source:    %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id} -un)
 Requires:  fuse
 Requires:  dkms-fuse
-Requires:  tahoe-svc
 
 %description
 tahoe-mount scripts
@@ -26,15 +25,18 @@ tahoe-mount scripts
 %{__rm} -rf %{buildroot}
 
 %{__install} -m 0755 -d %{buildroot}%{_bindir}
+%{__install} -m 0755 -d %{buildroot}%{_sysconfdir}
 %{__install} -m 0755 -d %{buildroot}%{_sysconfdir}/logrotate.d
 
 %{__install} -m 0755 bin/* %{buildroot}%{_bindir}/
-%{__install} -m 0755 logrotate.d/* %{buildroot}%{_sysconfdir}/logrotate.d/
+%{__install} -m 0644 etc/* %{buildroot}%{_sysconfdir}/
+%{__install} -m 0644 logrotate.d/* %{buildroot}%{_sysconfdir}/logrotate.d/
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}/tahoe*
 %{_bindir}/*.py
+%{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/logrotate.d/*
 
 %clean

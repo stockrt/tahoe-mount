@@ -1,15 +1,20 @@
 #!/bin/bash
 
-# TAHOE_USER
-source /usr/local/tahoe-svc/conf/tahoe-svc.conf
+#
+# Author: Rogério Carvalho Schneider <stockrt@gmail.com>
+# URL:    http://stockrt.github.com
+#
+
+# TAHOE_USER and TAHOE_BASEDIR
+source /etc/tahoe-mount.conf
 
 # Tahoe Fuse mount
 MALIAS="$1"
 MPOINT="$2"
-MPOINT=${MPOINT%/} # removes trailing slash
+MPOINT=${MPOINT%/} # remove trailing slash
 
 NTRY="3"
-DOMOUNT="cd ~/.tahoe
+DOMOUNT="cd $TAHOE_BASEDIR
 for ((x=0; x<$NTRY; x++))
 do
 	/usr/bin/blackmatch.py --alias=$MALIAS --cache-timeout=20 $MPOINT && break

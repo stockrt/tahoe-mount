@@ -1,6 +1,13 @@
 #!/bin/bash
 
+#
+# Author: Rogério Carvalho Schneider <stockrt@gmail.com>
+# URL:    http://stockrt.github.com
+#
+
 # Tahoe Fuse umount
 MPOINTS=$(pgrep -l -f blackmatch.py | awk '{print $NF}')
-pkill -f blackmatch.py > /dev/null 2>&1
-umount -l $MPOINTS > /dev/null 2>&1
+for M in $MPOINTS
+do
+	fusermount -u $M
+done

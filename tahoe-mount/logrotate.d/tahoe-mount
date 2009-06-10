@@ -1,3 +1,8 @@
+#
+# Author: Rogério Carvalho Schneider <stockrt@gmail.com>
+# URL:    http://stockrt.github.com
+#
+
 /home/*/.tahoe/*.log {
 	size 10M
 	rotate 0

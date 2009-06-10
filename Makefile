@@ -1,5 +1,6 @@
 #
 # Author: Rogério Carvalho Schneider <stockrt@gmail.com>
+# URL:    http://stockrt.github.com
 #
 
 MODULE=$(shell basename $(PWD))
@@ -7,7 +8,7 @@ VERSION=$(shell sed -ne 's/^Version:[ \t]*\(.*\)/\1/p' $(MODULE).spec)
 USER=$(shell id -un)
 TOPDIR=$(HOME)/rpmbuild
 #TOPDIR=/tmp/rpm/$(USER)
-SOURCE_DIR=$(TOPDIR)/SOURCE
+SOURCE_DIR=$(TOPDIR)/SOURCES
 
 all: rpm
 
