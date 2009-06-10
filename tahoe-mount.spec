@@ -3,7 +3,7 @@ Version:   0.1.0
 Release:   1
 Summary:   tahoe-mount scripts
 Group:     System/Server
-URL:       http://stockrtweb.homelinux.com
+URL:       http://allmydata.org/trac/tahoe
 Vendor:    Allmydata.org
 Packager:  Rogério Carvalho Schneider <stockrt@gmail.com>
 License:   GPL
