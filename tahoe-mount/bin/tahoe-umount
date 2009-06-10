@@ -6,7 +6,7 @@
 #
 
 # Tahoe Fuse umount
-MPOINTS=$(pgrep -l -f blackmatch.py | awk '{print $NF}')
+MPOINTS=$(pgrep -l -f blackmatch.py | awk '{print $NF}' | sort -u)
 for M in $MPOINTS
 do
 	fusermount -u $M

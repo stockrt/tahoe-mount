@@ -36,8 +36,8 @@ tahoe-mount scripts
 %defattr(-,root,root,-)
 %{_bindir}/tahoe*
 %{_bindir}/*.py
-%{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/logrotate.d/*
+%config(noreplace) %{_sysconfdir}/%{name}.conf
 
 %clean
 %{__rm} -rf %{buildroot}
