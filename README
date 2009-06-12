@@ -3,8 +3,7 @@
 # URL:    http://stockrt.github.com
 #
 
-With this package you can easily mount all your
-aliases from Tahoe-LAFS using one of the (yet incomplete)
-fuse implementations they provide.
+With this package you can easily mount all your aliases from Tahoe-LAFS
+using one of the (yet incomplete) fuse implementations they provide.
 
 Main project: http://allmydata.org/trac/tahoe
