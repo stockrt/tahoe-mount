@@ -13,6 +13,14 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id} -un)
 Requires:  fuse
 Requires:  dkms-fuse
 
+# Recommended Topdir
+%define _topdir %(echo $HOME)/rpmbuild
+# So the build does not fail due to unpackaged files or missing doc files:
+%define _unpackaged_files_terminate_build 0
+%define _missing_doc_files_terminate_build 0
+# No debug package:
+%define debug_package %{nil}
+
 %description
 tahoe-mount scripts
 
